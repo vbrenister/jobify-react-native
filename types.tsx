@@ -9,6 +9,7 @@ import {
   NavigatorScreenParams,
 } from "@react-navigation/native";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
+import { JobItem } from "./components/job-card.component";
 
 declare global {
   namespace ReactNavigation {
@@ -19,7 +20,7 @@ declare global {
 export type RootStackParamList = {
   Root: NavigatorScreenParams<RootTabParamList> | undefined;
   AccountSettings: undefined;
-  NotFound: undefined;
+  JobOverview: { item: JobItem };
 };
 
 export type RootStackScreenProps<Screen extends keyof RootStackParamList> =

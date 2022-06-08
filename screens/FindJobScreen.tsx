@@ -1,6 +1,6 @@
-import { View, Text } from "native-base";
+import { FlatList, Box, VStack, Divider, Heading, Text } from "native-base";
 import React from "react";
-import { StyleSheet } from "react-native";
+import { JobCard } from "../components/job-card.component";
 
 import { RootTabScreenProps } from "../types";
 
@@ -8,30 +8,35 @@ export default function FindJobScreen({
   navigation,
 }: RootTabScreenProps<"FindJob">) {
   return (
-    <View style={styles.container}>
-      <Text style={styles.title}>Tab One</Text>
-      <View
-        style={styles.separator}
-        lightColor="#eee"
-        darkColor="rgba(255,255,255,0.1)"
-      />
-    </View>
+    <FlatList
+      bgColor={"white"}
+      data={jobList}
+      keyExtractor={(i) => i.id}
+      renderItem={({ item }) => (
+        <JobCard
+          item={item}
+          onClick={() => navigation.navigate("JobOverview", { item })}
+        />
+      )}
+    />
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: "center",
-    justifyContent: "center",
+const jobList = [
+  {
+    id: "123",
+    title: "Waitress",
+    address: "Middeweg 113-3, Amsterdam",
+    description: "To do something",
+    hourRate: 12,
+    date: new Date(),
   },
-  title: {
-    fontSize: 20,
-    fontWeight: "bold",
+  {
+    id: "234",
+    title: "Security Guard",
+    address: "Middeweg 113-3, Amsterdam",
+    description: "To do something",
+    hourRate: 12,
+    date: new Date(),
   },
-  separator: {
-    marginVertical: 30,
-    height: 1,
-    width: "80%",
-  },
-});
+];

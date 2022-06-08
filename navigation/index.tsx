@@ -17,8 +17,8 @@ import { ColorSchemeName, Pressable } from "react-native";
 import Colors from "../constants/Colors";
 import useColorScheme from "../hooks/useColorScheme";
 import AccountSettingsScreen from "../screens/AccountSettingsScreen";
-import NotFoundScreen from "../screens/NotFoundScreen";
 import FindJobScreen from "../screens/FindJobScreen";
+import { JobOverviewScreen } from "../screens/JobOverviewScreen";
 import ScheduledJobScreen from "../screens/ScheduledJobScreen";
 import {
   RootStackParamList,
@@ -54,16 +54,16 @@ function RootNavigator() {
         component={BottomTabNavigator}
         options={{ headerShown: false }}
       />
-      <Stack.Screen
-        name="NotFound"
-        component={NotFoundScreen}
-        options={{ title: "Oops!" }}
-      />
       <Stack.Group screenOptions={{ presentation: "modal" }}>
         <Stack.Screen
           name="AccountSettings"
           component={AccountSettingsScreen}
           options={{ title: "Account Settings" }}
+        />
+        <Stack.Screen
+          name="JobOverview"
+          component={JobOverviewScreen}
+          options={{ title: "Overview" }}
         />
       </Stack.Group>
     </Stack.Navigator>
